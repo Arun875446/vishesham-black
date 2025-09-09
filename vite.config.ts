@@ -39,6 +39,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // 👇 important for Vercel (fixes white screen issue)
-  base: "/",
+  base: "./", // 👈 important for deployed assets
 }));
