@@ -37,7 +37,7 @@ const services = [
       "Gentle, heartwarming captures of your little ones most precious early moments.",
     path: "/services/baby-shoot",
     image:
-      "https://images.pexels.com/photos/33653846/pexels-photo-33653846.jpeg",
+      "https://images.pexels.com/photos/14986329/pexels-photo-14986329.jpeg",
   },
   {
     title: "Parties & Celebrations",
