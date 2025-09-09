@@ -73,9 +73,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoadingScreen from "./components/LoadingScreen";
 import Navigation from "./components/Navigation";
-import ScrollToTop from "./components/ScrollToTop";
-
-// Pages
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Team from "./pages/Team";
@@ -86,6 +83,7 @@ import PortraitService from "./pages/services/PortraitService";
 import BabyShootService from "./pages/services/BabyShootService";
 import PartiesService from "./pages/services/PartiesService";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -123,6 +121,7 @@ const App = () => {
                 element={<BabyShootService />}
               />
               <Route path="/services/parties" element={<PartiesService />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
