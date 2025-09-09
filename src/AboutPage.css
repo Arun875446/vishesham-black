@@ -1,0 +1,27 @@
+/* Gradient border animation */
+@keyframes gradient-border {
+  0% { border-image-source: linear-gradient(45deg, #FFD700, #FF8C00, #FFD700); }
+  50% { border-image-source: linear-gradient(225deg, #FFD700, #FF8C00, #FFD700); }
+  100% { border-image-source: linear-gradient(45deg, #FFD700, #FF8C00, #FFD700); }
+}
+
+.animate-gradient-border {
+  border: 2px solid transparent;
+  border-image-slice: 1;
+  border-radius: 1rem;
+  animation: gradient-border 5s linear infinite;
+}
+
+.animate-gradient-border-delayed {
+  border: 2px solid transparent;
+  border-image-slice: 1;
+  border-radius: 1rem;
+  animation: gradient-border 7s linear infinite;
+}
+
+.animate-gradient-border-slow {
+  border: 2px solid transparent;
+  border-image-slice: 1;
+  border-radius: 1rem;
+  animation: gradient-border 10s linear infinite;
+}

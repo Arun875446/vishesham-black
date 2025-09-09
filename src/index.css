@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Vishesham Photography Brand Design System - Cinematic & Professional */
+
+@layer base {
+  :root {
+    /* Core Brand Colors - Cinematic & Sophisticated */
+    --background: 20 14% 4%;
+    --foreground: 35 25% 96%;
+
+    --card: 20 12% 8%;
+    --card-foreground: 35 25% 96%;
+
+    --popover: 20 12% 8%;
+    --popover-foreground: 35 25% 96%;
+
+    /* Primary - Deep Charcoal for Elegance */
+    --primary: 20 14% 4%;
+    --primary-foreground: 35 25% 96%;
+
+    /* Secondary - Warm Ivory */
+    --secondary: 35 25% 96%;
+    --secondary-foreground: 20 14% 4%;
+
+    /* Gold Accent - Luxury Touch */
+    --gold: 41 85% 65%;
+    --gold-foreground: 20 14% 4%;
+
+    /* Rose Gold - Sophisticated Warmth */
+    --rose-gold: 15 40% 75%;
+    --rose-gold-foreground: 20 14% 4%;
+
+    /* Muted - Professional Grays */
+    --muted: 20 8% 15%;
+    --muted-foreground: 35 15% 75%;
+
+    --accent: 41 85% 65%;
+    --accent-foreground: 20 14% 4%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 35 25% 96%;
+
+    --border: 20 8% 20%;
+    --input: 20 8% 15%;
+    --ring: 41 85% 65%;
+
+    --radius: 0.75rem;
+
+    /* Cinematic Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(20 12% 8%) 50%, hsl(var(--gold) / 0.1) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(20 8% 6%) 100%);
+    --gradient-overlay: linear-gradient(135deg, hsl(var(--primary) / 0.8) 0%, hsl(var(--gold) / 0.3) 100%);
+
+    /* Cinematic Shadows */
+    --shadow-cinematic: 0 25px 60px -15px hsl(var(--primary) / 0.6);
+    --shadow-gold-glow: 0 10px 40px -10px hsl(var(--gold) / 0.4);
+    --shadow-elegant: 0 15px 35px -5px hsl(var(--primary) / 0.3);
+
+    /* Animation Timing */
+    --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Typography Scale */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-family: var(--font-body);
+  }
+
+  /* Smooth Scrolling for Cinematic Effect */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--gold));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--gold) / 0.8);
+  }
+}
+
+@layer components {
+  /* Cinematic Button Variants */
+  .btn-cinematic {
+    @apply relative px-8 py-4 bg-gradient-to-r from-gold/10 to-rose-gold/10 border border-gold/30 
+           text-gold font-medium rounded-lg backdrop-blur-sm transition-all duration-500
+           hover:from-gold/20 hover:to-rose-gold/20 hover:border-gold/50 hover:shadow-gold-glow
+           hover:scale-105 active:scale-95;
+  }
+
+  .btn-primary-cinematic {
+    @apply relative px-8 py-4 bg-gradient-to-r from-gold to-rose-gold 
+           text-primary font-semibold rounded-lg transition-all duration-500
+           hover:shadow-gold-glow hover:scale-105 active:scale-95;
+  }
+
+  /* Text Reveals for Cinematic Effect */
+  .text-reveal {
+    @apply opacity-0 translate-y-8;
+  }
+
+  .text-reveal.revealed {
+    @apply opacity-100 translate-y-0 transition-all duration-1000 ease-out;
+  }
+
+  /* Image Hover Effects */
+  .image-hover {
+    @apply relative overflow-hidden rounded-lg transition-transform duration-700 hover:scale-105;
+  }
+
+  .image-hover::after {
+    @apply absolute inset-0 bg-gradient-overlay opacity-0 transition-opacity duration-500;
+    content: '';
+  }
+
+  .image-hover:hover::after {
+    @apply opacity-30;
+  }
+
+  /* Grid Layouts */
+  .photography-grid {
+    @apply grid gap-6;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .team-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8;
+  }
+
+  /* Loading Animation */
+  @keyframes camera-focus {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(5deg); }
+  }
+
+  .camera-loading {
+    animation: camera-focus 2s ease-in-out infinite;
+  }
+
+  /* Parallax Container */
+  .parallax-container {
+    @apply relative overflow-hidden;
+  }
+
+  .parallax-element {
+    @apply absolute inset-0 will-change-transform;
+  }
+}
