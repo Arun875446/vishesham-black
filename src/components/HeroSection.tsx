@@ -95,12 +95,102 @@
 // };
 
 // export default HeroSection;
+// "use client";
+
+// import { useEffect, useRef } from "react";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import women from "../assets/women blanket.png";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const HeroSection = () => {
+//   const containerRef = useRef<HTMLDivElement>(null);
+//   const indicatorRef = useRef<HTMLDivElement>(null);
+
+//   useEffect(() => {
+//     const ctx = gsap.context(() => {
+//       const panels = gsap.utils.toArray<HTMLElement>(".panel");
+
+//       gsap.to(panels, {
+//         xPercent: -100 * (panels.length - 1),
+//         ease: "none",
+//         scrollTrigger: {
+//           trigger: containerRef.current, // pin outer hero section
+//           pin: true,
+//           scrub: 1,
+//           snap: 1 / (panels.length - 1),
+//           end: () => `+=${window.innerWidth * (panels.length - 1)}`,
+//           onUpdate: (self) => {
+//             if (indicatorRef.current) {
+//               gsap.to(indicatorRef.current, {
+//                 opacity: self.progress < 0.1 ? 1 : 0,
+//                 duration: 0.5,
+//               });
+//             }
+//           },
+//         },
+//       });
+//     }, containerRef);
+
+//     return () => ctx.revert();
+//   }, []);
+
+//   return (
+//     <section
+//       ref={containerRef}
+//       className="relative h-screen w-full overflow-hidden"
+//     >
+//       {/* Panels Container */}
+//       <div className="panels-container flex h-full w-[400vw]">
+//         <div className="panel h-screen w-screen">
+//           <img
+//             // src="https://images.pexels.com/photos/713149/pexels-photo-713149.jpeg"
+//             src="https://images.pexels.com/photos/19982600/pexels-photo-19982600.jpeg"
+//             alt="Cinematic 1"
+//             className="h-full w-full object-cover"
+//           />
+//         </div>
+//         <div className="panel h-screen w-screen">
+//           <img
+//             src="https://images.pexels.com/photos/32413036/pexels-photo-32413036.jpeg"
+//             alt="Cinematic 2"
+//             className="h-full w-full object-cover"
+//           />
+//         </div>
+//         <div className="panel h-screen w-screen">
+//           <img
+//             src="https://images.pexels.com/photos/13123461/pexels-photo-13123461.jpeg"
+//             alt="Cinematic 3"
+//             className="h-full w-full object-cover"
+//           />
+//         </div>
+//         <div className="panel h-screen w-screen">
+//           <img
+//             src="https://images.pexels.com/photos/6518885/pexels-photo-6518885.jpeg"
+//             alt="Cinematic 4"
+//             className="h-full w-full object-cover"
+//           />
+//         </div>
+//       </div>
+
+//       {/* Scroll Indicator */}
+//       <div
+//         ref={indicatorRef}
+//         className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-lg animate-bounce"
+//       >
+//         ↓ Scroll
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default HeroSection;
 "use client";
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import women from "../assets/women blanket.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -116,19 +206,21 @@ const HeroSection = () => {
         xPercent: -100 * (panels.length - 1),
         ease: "none",
         scrollTrigger: {
-          trigger: containerRef.current, // pin outer hero section
+          trigger: containerRef.current,
           pin: true,
           scrub: 1,
-          snap: 1 / (panels.length - 1),
+          snap: 1 / (panels.length - 1), // snap to each panel
           end: () => `+=${window.innerWidth * (panels.length - 1)}`,
           onUpdate: (self) => {
             if (indicatorRef.current) {
               gsap.to(indicatorRef.current, {
                 opacity: self.progress < 0.1 ? 1 : 0,
-                duration: 0.5,
+                duration: 0.3,
               });
             }
           },
+          // Make it mobile-friendly
+          invalidateOnRefresh: true,
         },
       });
     }, containerRef);
@@ -142,30 +234,29 @@ const HeroSection = () => {
       className="relative h-screen w-full overflow-hidden"
     >
       {/* Panels Container */}
-      <div className="panels-container flex h-full w-[400vw]">
-        <div className="panel h-screen w-screen">
+      <div className="panels-container flex h-full w-[400vw] touch-pan-x overflow-x-auto scroll-smooth">
+        <div className="panel h-screen w-screen flex-shrink-0">
           <img
-            // src="https://images.pexels.com/photos/713149/pexels-photo-713149.jpeg"
             src="https://images.pexels.com/photos/19982600/pexels-photo-19982600.jpeg"
             alt="Cinematic 1"
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="panel h-screen w-screen">
+        <div className="panel h-screen w-screen flex-shrink-0">
           <img
             src="https://images.pexels.com/photos/32413036/pexels-photo-32413036.jpeg"
             alt="Cinematic 2"
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="panel h-screen w-screen">
+        <div className="panel h-screen w-screen flex-shrink-0">
           <img
             src="https://images.pexels.com/photos/13123461/pexels-photo-13123461.jpeg"
             alt="Cinematic 3"
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="panel h-screen w-screen">
+        <div className="panel h-screen w-screen flex-shrink-0">
           <img
             src="https://images.pexels.com/photos/6518885/pexels-photo-6518885.jpeg"
             alt="Cinematic 4"
