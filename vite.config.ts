@@ -37,12 +37,13 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"), // @ shortcut to src
     },
   },
-  base: "./", // ensures assets load correctly on Vercel
+  base: "./", // ensures JS/CSS assets load correctly on Vercel
   server: {
     host: "::",
     port: 8080,
   },
   build: {
     outDir: "dist", // Vercel expects this
+    sourcemap: false,
   },
 }));
