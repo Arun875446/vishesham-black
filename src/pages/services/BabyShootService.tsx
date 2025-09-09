@@ -165,7 +165,7 @@ const BabyShootService = () => {
         {/* CTA */}
         <div className="text-center">
           <Link to="/contact" className="btn-primary-cinematic">
-            Book Baby Photography Session
+            Book your Session
           </Link>
         </div>
       </div>
